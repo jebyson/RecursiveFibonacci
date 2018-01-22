@@ -11,6 +11,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int userNum = input.nextInt();
 
-        Fibonacci.checkFib(userNum);
+        Fibonacci test = new Fibonacci();
+        test.Fibonacci(userNum);
     }
 }

@@ -5,14 +5,16 @@ package com.company;
  */
 public class Fibonacci {
 
-    public static void checkFib(int num)
+    private int [] sequence = new int[100000];
+
+    private int fibTotal = 0;
+    private int xTemp = 0;
+    private int yTemp = 1;
+
+    private int numOfSteps = 0;
+
+    public void Fibonacci(int num)
     {
-        int [] sequence = new int[100000];
-
-        int fibTotal;
-        int xTemp = 0;
-        int yTemp = 1;
-
         for(int j = 0; j < sequence.length; j++)
         {
             fibTotal = xTemp + yTemp;
@@ -24,24 +26,40 @@ public class Fibonacci {
             if(num == sequence[j])
             {
                 System.out.println(num + " is a number in the Fibonacci sequnce. Here is the sequence leading up to it:");
-                System.out.println(fibSequence(num));
+                numOfSteps = j;
+                checkFib(num);
+                break;
+            }
+            else if(j == sequence.length - 1 && num != fibTotal)
+            {
+                System.out.println(num + " is not a number in the Fibonacci sequence.");
             }
         }
     }
 
-    public static int fibSequence(int num)
+    public void checkFib(int inputNum)
     {
-        if(num == 0)
+        int fibTotal = 0;
+        int xTemp = 0;
+        int yTemp = 1;
+
+        System.out.print("0, 1, ");
+
+        for(int k = 0; k < numOfSteps; k++)
         {
-            return 0;
-        }
-        else if(num == 1)
-        {
-            return num;
-        }
-        else
-        {
-            return fibSequence(num - 1) + fibSequence(num - 2);
+            fibTotal = xTemp + yTemp;
+            xTemp = yTemp;
+            yTemp = fibTotal;
+
+            sequence[k] = fibTotal;
+
+            System.out.print(sequence[k] + ", ");
+
+            if(sequence[k] == inputNum)
+            {
+                System.out.print(" " + inputNum);
+                break;
+            }
         }
     }
 }
