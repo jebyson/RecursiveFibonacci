@@ -10,5 +10,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         int userNum = input.nextInt();
+
+        Fibonacci.checkFib(userNum);
     }
 }
